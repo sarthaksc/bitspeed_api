@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b98bfd8-6d16-42c1-9b1c-047eca3ac6bf" name="Changes" comment="added files to deploy to render" />
+    <list default="true" id="5b98bfd8-6d16-42c1-9b1c-047eca3ac6bf" name="Changes" comment="added modified databse url and corrected render.yaml">
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,7 +74,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1748415717640</updated>
-      <workItem from="1748415720586" duration="9675000" />
+      <workItem from="1748415720586" duration="10013000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -130,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748427650733</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added modified databse url and corrected render.yaml">
+      <option name="closed" value="true" />
+      <created>1748428036600</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1748428036600</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,7 +164,8 @@
     <MESSAGE value="added functionality to link primary and secondary contacts" />
     <MESSAGE value="added requirements.txt file" />
     <MESSAGE value="added files to deploy to render" />
-    <option name="LAST_COMMIT_MESSAGE" value="added files to deploy to render" />
+    <MESSAGE value="added modified databse url and corrected render.yaml" />
+    <option name="LAST_COMMIT_MESSAGE" value="added modified databse url and corrected render.yaml" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/bitespeed$main.coverage" NAME="main Coverage Results" MODIFIED="1748422863926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
