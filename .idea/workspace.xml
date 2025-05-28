@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b98bfd8-6d16-42c1-9b1c-047eca3ac6bf" name="Changes" comment="added functionality to return all identified primary and secondary contacts" />
+    <list default="true" id="5b98bfd8-6d16-42c1-9b1c-047eca3ac6bf" name="Changes" comment="added functionality to link primary and secondary contacts">
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,7 +74,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1748415717640</updated>
-      <workItem from="1748415720586" duration="7497000" />
+      <workItem from="1748415720586" duration="8235000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -106,7 +108,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748425672196</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added functionality to link primary and secondary contacts">
+      <option name="closed" value="true" />
+      <created>1748425919415</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1748425919415</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,7 +137,8 @@
     <MESSAGE value="initial commit" />
     <MESSAGE value="added functionality to automatically add contacts to the table if no match is identified" />
     <MESSAGE value="added functionality to return all identified primary and secondary contacts" />
-    <option name="LAST_COMMIT_MESSAGE" value="added functionality to return all identified primary and secondary contacts" />
+    <MESSAGE value="added functionality to link primary and secondary contacts" />
+    <option name="LAST_COMMIT_MESSAGE" value="added functionality to link primary and secondary contacts" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/bitespeed$main.coverage" NAME="main Coverage Results" MODIFIED="1748422863926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
