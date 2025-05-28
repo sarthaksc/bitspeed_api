@@ -59,7 +59,62 @@ def identify():
                 "secondaryContactIds": []
             }
         }), 200
+    primary_contacts = [c for c in contacts if c.linkPrecedence == 'primary']
+    primary_contact = min(primary_contacts, key=lambda c: c.createdAt) if primary_contacts else min(contacts, key=lambda
+        c: c.createdAt)
 
+    # Convert all other primary contacts to secondary linked to the oldest primary
+    for contact in primary_contacts:
+        if contact.id != primary_contact.id:
+            contact.linkPrecedence = 'secondary'
+            contact.linkedId = primary_contact.id
+            contact.updatedAt = datetime.utcnow()
+            db.session.add(contact)
+
+    db.session.commit()
+
+    # Fetch all contacts linked to the resolved primary
+    all_linked_contacts = db.session.execute(
+        db.select(Contact).where(
+            or_(
+                Contact.id == primary_contact.id,
+                Contact.linkedId == primary_contact.id,
+                Contact.id.in_([c.linkedId for c in contacts if c.linkedId])
+            )
+        )
+    ).scalars().all()
+
+    all_linked_contacts = list({c.id: c for c in all_linked_contacts}.values())
+
+    # Organize contact details
+    emails = []
+    phoneNumbers = []
+    secondary_ids = []
+
+    for contact in all_linked_contacts:
+        if contact.email and contact.email not in emails:
+            emails.append(contact.email)
+        if contact.phoneNumber and contact.phoneNumber not in phoneNumbers:
+            phoneNumbers.append(contact.phoneNumber)
+        if contact.linkPrecedence == 'secondary':
+            secondary_ids.append(contact.id)
+
+    # Ensure primary's info is at the front
+    if primary_contact.email in emails:
+        emails.remove(primary_contact.email)
+        emails.insert(0, primary_contact.email)
+    if primary_contact.phoneNumber in phoneNumbers:
+        phoneNumbers.remove(primary_contact.phoneNumber)
+        phoneNumbers.insert(0, primary_contact.phoneNumber)
+
+    return jsonify({
+        "contact": {
+            "primaryContactId": primary_contact.id,
+            "emails": emails,
+            "phoneNumbers": phoneNumbers,
+            "secondaryContactIds": secondary_ids
+        }
+    }), 200
 if __name__ == '__main__':
     app.run(debug=True)
 
