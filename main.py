@@ -63,7 +63,7 @@ def identify():
     primary_contact = min(primary_contacts, key=lambda c: c.createdAt) if primary_contacts else min(contacts, key=lambda
         c: c.createdAt)
 
-    # Convert all other primary contacts to secondary linked to the oldest primary
+
     for contact in primary_contacts:
         if contact.id != primary_contact.id:
             contact.linkPrecedence = 'secondary'
@@ -73,7 +73,7 @@ def identify():
 
     db.session.commit()
 
-    # Fetch all contacts linked to the resolved primary
+
     all_linked_contacts = db.session.execute(
         db.select(Contact).where(
             or_(
@@ -86,7 +86,7 @@ def identify():
 
     all_linked_contacts = list({c.id: c for c in all_linked_contacts}.values())
 
-    # Organize contact details
+
     emails = []
     phoneNumbers = []
     secondary_ids = []
@@ -99,7 +99,7 @@ def identify():
         if contact.linkPrecedence == 'secondary':
             secondary_ids.append(contact.id)
 
-    # Ensure primary's info is at the front
+
     if primary_contact.email in emails:
         emails.remove(primary_contact.email)
         emails.insert(0, primary_contact.email)
