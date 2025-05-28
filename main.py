@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from flask import Flask, jsonify, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
@@ -30,6 +29,7 @@ with app.app_context():
 def home():
     return render_template("index.html")
 
+
 @app.route("/identify")
 def identify():
     email=request.args.get("email")
@@ -59,10 +59,35 @@ def identify():
                 "secondaryContactIds": []
             }
         }), 200
+
+    existing_emails = {c.email for c in contacts if c.email}
+    existing_phones = {c.phoneNumber for c in contacts if c.phoneNumber}
+
+    new_email = email and email not in existing_emails
+    new_phone = phoneNumber and phoneNumber not in existing_phones
+
+    if contacts and (new_email or new_phone):
+        primary_contacts = [c for c in contacts if c.linkPrecedence == 'primary']
+        primary_contact = min(primary_contacts, key=lambda c: c.createdAt) if primary_contacts else min(contacts,
+                                                                                                        key=lambda
+                                                                                                            c: c.createdAt)
+
+        new_secondary = Contact(
+            email=email,
+            phoneNumber=phoneNumber,
+            linkedId=primary_contact.id,
+            linkPrecedence='secondary',
+            createdAt=datetime.utcnow(),
+            updatedAt=datetime.utcnow(),
+            deletedAt=None
+        )
+        db.session.add(new_secondary)
+        db.session.commit()
+
+        contacts.append(new_secondary)
     primary_contacts = [c for c in contacts if c.linkPrecedence == 'primary']
     primary_contact = min(primary_contacts, key=lambda c: c.createdAt) if primary_contacts else min(contacts, key=lambda
         c: c.createdAt)
-
 
     for contact in primary_contacts:
         if contact.id != primary_contact.id:
@@ -72,7 +97,6 @@ def identify():
             db.session.add(contact)
 
     db.session.commit()
-
 
     all_linked_contacts = db.session.execute(
         db.select(Contact).where(
@@ -86,7 +110,6 @@ def identify():
 
     all_linked_contacts = list({c.id: c for c in all_linked_contacts}.values())
 
-
     emails = []
     phoneNumbers = []
     secondary_ids = []
@@ -98,7 +121,6 @@ def identify():
             phoneNumbers.append(contact.phoneNumber)
         if contact.linkPrecedence == 'secondary':
             secondary_ids.append(contact.id)
-
 
     if primary_contact.email in emails:
         emails.remove(primary_contact.email)
@@ -115,6 +137,6 @@ def identify():
             "secondaryContactIds": secondary_ids
         }
     }), 200
+
 if __name__ == '__main__':
     app.run(debug=True)
-
