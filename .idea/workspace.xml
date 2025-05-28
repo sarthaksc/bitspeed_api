@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b98bfd8-6d16-42c1-9b1c-047eca3ac6bf" name="Changes" comment="added requirements.txt file">
-      <change afterPath="$PROJECT_DIR$/render.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-    </list>
+    <list default="true" id="5b98bfd8-6d16-42c1-9b1c-047eca3ac6bf" name="Changes" comment="added files to deploy to render" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,7 +72,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1748415717640</updated>
-      <workItem from="1748415720586" duration="9316000" />
+      <workItem from="1748415720586" duration="9675000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <option name="closed" value="true" />
@@ -126,7 +122,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748426672313</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added files to deploy to render">
+      <option name="closed" value="true" />
+      <created>1748427650733</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1748427650733</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,7 +153,8 @@
     <MESSAGE value="added functionality to return all identified primary and secondary contacts" />
     <MESSAGE value="added functionality to link primary and secondary contacts" />
     <MESSAGE value="added requirements.txt file" />
-    <option name="LAST_COMMIT_MESSAGE" value="added requirements.txt file" />
+    <MESSAGE value="added files to deploy to render" />
+    <option name="LAST_COMMIT_MESSAGE" value="added files to deploy to render" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/bitespeed$main.coverage" NAME="main Coverage Results" MODIFIED="1748422863926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

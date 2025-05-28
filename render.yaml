@@ -3,5 +3,5 @@ services:
     name: flask-api
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    startCommand: gunicorn main:app
     autoDeploy: true
