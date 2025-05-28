@@ -30,6 +30,36 @@ with app.app_context():
 def home():
     return render_template("index.html")
 
+@app.route("/identify")
+def identify():
+    email=request.args.get("email")
+    phoneNumber=request.args.get("phoneNumber")
+    result=db.session.execute(
+        db.select(Contact).where(or_(Contact.email == email, Contact.phoneNumber == phoneNumber))
+    )
+
+    contacts=result.scalars().all()
+    if not contacts:
+        new_contact = Contact(
+            email=email,
+            phoneNumber=phoneNumber,
+            linkPrecedence='primary',
+            createdAt=datetime.utcnow(),
+            updatedAt=datetime.utcnow(),
+            deletedAt=None
+        )
+        db.session.add(new_contact)
+        db.session.commit()
+
+        return jsonify({
+            "contact": {
+                "primaryContactId": new_contact.id,
+                "emails": [new_contact.email] if new_contact.email else [],
+                "phoneNumbers": [new_contact.phoneNumber] if new_contact.phoneNumber else [],
+                "secondaryContactIds": []
+            }
+        }), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
+
